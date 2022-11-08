@@ -1,7 +1,12 @@
-VPC Creation
+Terraform Installation
 -----------------
 
+https://www.terraform.io/downloads
 
+1. curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+2. sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+3. sudo apt-get update && sudo apt-get install terraform
+4. terraform -v
 
 
 

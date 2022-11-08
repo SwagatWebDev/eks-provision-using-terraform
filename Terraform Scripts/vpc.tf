@@ -8,11 +8,11 @@ resource "aws_vpc" "main" {
 
   # Required for EKS. Enable/disable DNS support in the VPC.
   # A boolean flag to enable/disable DNS support in the VPC. Defaults to true.
-  enable_dns_support = true;
+  enable_dns_support = true
 
   # Required for EKS. Enable/disable DNS hostnames support in the VPC.
   # A boolean flag to enable/disable DNS hostnames in the VPC. Defaults false.
-  enable_dns_hostnames = true;
+  enable_dns_hostnames = true
 
   # Enable/disable ClassicLink DNS Support for the VPC
   enable_classic_dns_support = false
