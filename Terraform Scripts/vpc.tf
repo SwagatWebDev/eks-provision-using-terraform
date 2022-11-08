@@ -18,7 +18,7 @@ resource "aws_vpc" "main" {
   enable_classic_dns_support = false
 
   # Requests an Amazon-provided IPv6 CIDR block with a /56 prefix length
-  assign_generated_ipv6_cidr_block = false;
+  assign_generated_ipv6_cidr_block = false
 
   # A map of tags to assign to the resources.
   tags = {

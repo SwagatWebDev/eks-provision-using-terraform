@@ -1,4 +1,4 @@
-Terraform Installation
+1. Terraform Installation
 -----------------
 
 https://www.terraform.io/downloads
@@ -8,5 +8,6 @@ https://www.terraform.io/downloads
 3. sudo apt-get update && sudo apt-get install terraform
 4. terraform -v
 
+2. Clone your repo and go to the file where you have your terraform scripts
 
-
+#
