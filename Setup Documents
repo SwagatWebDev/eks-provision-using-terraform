@@ -10,4 +10,6 @@ https://www.terraform.io/downloads
 
 2. Clone your repo and go to the file where you have your terraform scripts
 
-#
+# terraform fmt
+# terraform init
+# terraform plan

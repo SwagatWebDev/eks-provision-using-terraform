@@ -14,8 +14,11 @@ resource "aws_vpc" "main" {
   # A boolean flag to enable/disable DNS hostnames in the VPC. Defaults false.
   enable_dns_hostnames = true
 
+  # Enable/disable ClassicLink for the VPC
+  enable_classiclink = false
+
   # Enable/disable ClassicLink DNS Support for the VPC
-  enable_classic_dns_support = false
+  enable_classiclink_dns_support = false
 
   # Requests an Amazon-provided IPv6 CIDR block with a /56 prefix length
   assign_generated_ipv6_cidr_block = false
