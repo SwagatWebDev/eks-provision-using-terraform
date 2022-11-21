@@ -21,7 +21,7 @@ resource "aws_subnet" "public-1" {
   # IP addresses we need to allocate. 
   cidr_block              = "10.0.0.0/19"
   # The AZ for the subnet.
-  availability_zone       = "us-east-1a"
+  availability_zone       = "us-east-2a"
   # Required for EKS. Every new Instances that will be deployed in the public subnet will 
   # automatically gets the public IP address.
   map_public_ip_on_launch = true
@@ -45,7 +45,7 @@ resource "aws_subnet" "public-2" {
   vpc_id                  = aws_vpc.main.id
   # The next CIDR block for the subnet. Here we need to define the next IP addresses of 10.0.64.0/19
   cidr_block              = "10.0.32.0/19"
-  availability_zone       = "us-east-1b"
+  availability_zone       = "us-east-2b"
   map_public_ip_on_launch = true
 
   tags = {
@@ -58,7 +58,7 @@ resource "aws_subnet" "public-2" {
 resource "aws_subnet" "private-1" {
   vpc_id            = aws_vpc.main.id
   cidr_block        = "10.0.64.0/19"
-  availability_zone = "us-east-1a"
+  availability_zone = "us-east-2a"
 
   tags = {
     "Name"                            = "private-1"
@@ -72,7 +72,7 @@ resource "aws_subnet" "private-1" {
 resource "aws_subnet" "private-2" {
   vpc_id            = aws_vpc.main.id
   cidr_block        = "10.0.96.0/19"
-  availability_zone = "us-east-1b"
+  availability_zone = "us-east-2b"
 
   tags = {
     "Name"                            = "private-2"

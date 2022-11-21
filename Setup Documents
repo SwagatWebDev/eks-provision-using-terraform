@@ -13,6 +13,7 @@ https://www.terraform.io/downloads
 # terraform fmt
 # terraform init
 # terraform plan
+# terraform apply
 
 3. After EKS Cluster setup, run the bellow commands 
  Verify config file is available or not 
