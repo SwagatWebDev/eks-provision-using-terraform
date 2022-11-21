@@ -103,9 +103,6 @@ resource "aws_eks_node_group" "nodes-general" {
     role = "general"
   }
 
-  # Kubernetes Version (optional)
-  version = "1.18"
-
   # We need to define depends on block since we attaching 3 policies.
   # Since we are not using directly through our resouces we need to explictly declare it 
   depends_on = [
