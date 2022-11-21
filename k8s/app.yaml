@@ -49,9 +49,8 @@ spec:
     app: nginx
   type: LoadBalancer
   ports:
-    - name:  nginx app port with private lb
-      port:  80
-      protocol: TCP
+    - protocol: "TCP"
+      port: 80 # The port that the service is running on in the cluster
 
 ---
 apiVersion: v1
@@ -70,6 +69,5 @@ spec:
     app: nginx
   type: LoadBalancer
   ports:
-    - name:  nginx app port with public lb
-      port:  80
-      protocol: TCP
+    - protocol: "TCP"
+      port: 80 # The port that the service is running on in the cluster
