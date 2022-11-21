@@ -44,9 +44,6 @@ resource "aws_eks_cluster" "eks" {
   # the kubernetes control plane to make calls to AWS API operation in your behalf.
   role_arn = aws_iam_role.eks_cluster.arn
 
-  # Desired Kubernetes master version
-  version = "1.18"
-
   # VPC Block with Networking parameters
   vpc_config {
 
