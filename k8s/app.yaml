@@ -16,7 +16,7 @@ spec:
   # The selector field defines how the deployment finds which pod to manage
   selector:
     matchLabels:
-      app: angular-k8s-deployment
+      app: nginx
   template:
     metadata:
       # Labels are used as identifying attributes for objects such as pods and replication controller.

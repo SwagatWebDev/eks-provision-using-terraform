@@ -1,5 +1,5 @@
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway
-# To Provide internet access for your services we need to have interbet gateway in your VPC.
+# To Provide internet access for your services we need to have internet gateway in your VPC.
 # It will be used as a default route for in public subnet.
 # Internet Gateway is the Horizontal scaled, redudant and highly available VPC component 
 # that allows communication to your VPC and the Internet. 
