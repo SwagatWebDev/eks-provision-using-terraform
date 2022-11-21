@@ -77,6 +77,6 @@ resource "aws_subnet" "private-2" {
   tags = {
     "Name"                            = "private-2"
     "kubernetes.io/role/internal-elb" = "1"
-    "kubernetes.io/cluster/eks"      = "shared "
+    "kubernetes.io/cluster/eks"      = "shared"
   }
 }
