@@ -33,6 +33,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  # Private Load Balancer
   name: internal-nginx-service
   # In order to configure load balancers to provide custom configuration we can use Kubernetes annotations 
   annotations:
@@ -40,13 +41,35 @@ metadata:
     service.beta.kubernetes.io/aws-load-balancer-type: nlb
     # Define for cross zone load balancing
     service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: 'true'
-    # Defines whether Public or Private Load Balancer used
+    # Defines whether Public or Private Load Balancer used. This case we use Private LB.
+    # if we don't specify this by default it will create Public LB.
     service.beta.kubernetes.io/aws-load-balancer-internal: 0.0.0.0/0
 spec:
   selector:
     app: nginx
   type: LoadBalancer
   ports:
-    - name:  nginx app port name
+    - name:  nginx app port with private lb
+      port:  80
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  # Public Load Balancer
+  name: external-nginx-service
+  # In order to configure load balancers to provide custom configuration we can use Kubernetes annotations 
+  annotations:
+    # Defines type of load balancer like Network LB or Classic LB
+    service.beta.kubernetes.io/aws-load-balancer-type: nlb
+    # Define for cross zone load balancing
+    service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: 'true'
+spec:
+  selector:
+    app: nginx
+  type: LoadBalancer
+  ports:
+    - name:  nginx app port with public lb
       port:  80
       protocol: TCP

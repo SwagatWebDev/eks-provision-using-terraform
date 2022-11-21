@@ -13,3 +13,12 @@ https://www.terraform.io/downloads
 # terraform fmt
 # terraform init
 # terraform plan
+
+3. After EKS Cluster setup, run the bellow commands 
+ Verify config file is available or not 
+ # rm ~/.kube/config
+
+ # aws eks --region us-east-1 update-kubeconfig --name eks --profile terraform 
+
+ After that we can access our Kubernetes cluster.
+ # kubectl get svc
