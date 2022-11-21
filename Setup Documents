@@ -1,14 +1,14 @@
-1. Terraform Installation
+1.Terraform Installation
 -----------------
 
 https://www.terraform.io/downloads
 
-1. curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
-2. sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
-3. sudo apt-get update && sudo apt-get install terraform
-4. terraform -v
+a. curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+b. sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+c. sudo apt-get update && sudo apt-get install terraform
+d. terraform -v
 
-2. Clone your repo and go to the file where you have your terraform scripts
+2.Clone your repo and go to the file where you have your terraform scripts
 
 # terraform fmt
 # terraform init
