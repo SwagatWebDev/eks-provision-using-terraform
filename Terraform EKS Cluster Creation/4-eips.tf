@@ -1,5 +1,5 @@
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eip 
-# Here we are creating our first Elastic IP Address. This resouce allocates the public static IP
+# Here we are creating our first Elastic IP Address. This resource allocates the public static IP
 # address in AWS. Here one requirement is that the Internet Gateway must present in the VPC
 resource "aws_eip" "nat1" {
   # EIP may require IGW to exist prior to allocation.

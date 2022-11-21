@@ -1,4 +1,4 @@
-# NAT Gateway is used to eanable instances in private subnets to connect to the Internet
+# NAT Gateway is used to enable instances in private subnets to connect to the Internet
 # e.g for software installation or updates. Also we need to allocate a public static IP address 
 # for those NAT Gateways. For that purpose we will use another AWS service called Elastic IP addresses
 

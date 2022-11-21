@@ -41,7 +41,116 @@ Let’s provide the permission
  Verify config file is available or not 
  # rm ~/.kube/config
 
- # aws eks --region us-east-2 update-kubeconfig --name eks --profile terraform 
+ # aws eks --region us-east-2 update-kubeconfig --name eks
 
  After that we can access our Kubernetes cluster.
  # kubectl get svc
+
+6. Please follow the steps to install Java, Jenkins, Maven on Ubuntu 18.0.4 instance. Jenkins, Maven are Java based applications, so we need to install Java first. 
+
+a. Change Host Name to Jenkins
+sudo hostnamectl set-hostname Jenkins
+
+b. Perform update first
+sudo apt update
+
+c. Install Java 11
+sudo apt-get install default-jdk -y
+
+d. Once install java, enter the below command, Verify Java Version
+java -version
+
+e. Maven Installation
+Maven is a popular build tool used for building Java applications
+sudo apt install maven -y
+
+f. you can the Maven version
+mvn --version
+
+
+g. Jenkins Setup
+Add Repository key to the system
+wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
+
+f. Append debian package repo address to the system
+echo deb http://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list
+
+g. Update Ubuntu package
+sudo apt update
+
+h. Install Jenkins
+sudo apt install jenkins -y
+
+Do initial setup of Jenkins
+
+7. Then lets install Docker into our machine.
+As EKS cluster is creating in one terminal, am going to open one more terminal for other installations. Be in ubuntu user and start installing Docker 	
+Open a new terminal
+
+Steps:
+Install docker
+# sudo apt install docker.io -y
+
+Add Ubuntu user to Docker group
+# sudo usermod -aG docker $USER
+
+By this command Ubuntu user can perform docker commands without sudo user, that’s the main reason to perform this command 
+
+The Docker service needs to be setup to run at startup.
+# sudo systemctl start docker
+# sudo systemctl enable docker
+# sudo systemctl status docker
+
+After that we need to add jenkins users to the Docker group because Jenkins is going to perform the docker build 
+Add ubuntu user to Docker group
+# sudo usermod -a -G docker jenkins
+
+After we do that we need to restart our Jenkins 
+Restart Jenkins service
+# sudo service jenkins restart
+
+Reload system daemon files
+# sudo systemctl daemon-reload
+
+Restart Docker service as well
+# sudo service docker stop
+# sudo service docker start
+
+Now docker installed and running.
+
+8. Now to see the kubeconfig entry you can copy kubeconfig information has been under /var/lib/jenkins/.kube/config
+# cat /var/lib/jenkins/.kube/config
+
+or 
+# cat ~/.kube/config
+
+Using this configuration Kubectl command is communicating to EKS Cluster
+Now let’s store this configuration to text file name it as kubeconfig-file
+Make sure you don’t miss anything from in that file 
+
+Now let’s create credentials for connecting Kubernetes Cluster using kubeconfig
+In Jenkins
+Manage jenkins -> Manage Credentials -> Click on Global Credentials -> Add Credentials ->  Select kind as Secret File -> Choose your kubeconfig file -> Put any name to Id: K8s -> Description optional: K8S -> Click on ok
+Now our kubeconfig entry has been saved as a credential here 
+
+Now go to pipeline say configure
+
+Let’s write the stage for deploying our microservice to Kubernetes Cluster
+
+Now lets generate the script, select pipeline syntax
+Remember we installed a plugin called  Kubernetes CLI plugin
+
+Select withKubeConfig: Configure Kubernetes CLI (kubectl)
+
+Then select the credential what we just created, then don’t provide anything’ then say Generate Pipeline Script
+Then Copy this command, ow lets create a new stage 
+
+stage('K8S Deploy') {
+   steps{
+     script {
+        withKubeConfig([credentialsId: 'K8S', serverUrl: '']) {
+        sh ('kubectl apply -f  eks-deploy-k8s.yaml')
+        }
+     }
+   }
+}
