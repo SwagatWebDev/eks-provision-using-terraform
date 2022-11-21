@@ -31,7 +31,7 @@ resource "aws_subnet" "public-1" {
     # Name of the subnet.
     "Name"                       = "public-1"
     # It will allow the EKS Cluster to discover the above subnet and use it.
-    "kubernetes.io/cluster/demo" = "owned"
+    "kubernetes.io/cluster/eks" = "shared"
     # This block is mandatory if you want to deploy public load balancers.
     # When you create Kubernetes service type of your load balancer and you want to create
     # public load balancer. This tags will be use by EKS to discover those subnets and
@@ -50,7 +50,7 @@ resource "aws_subnet" "public-2" {
 
   tags = {
     "Name"                       = "public-2"
-    "kubernetes.io/cluster/demo" = "owned"
+    "kubernetes.io/cluster/eks" = "shared"
     "kubernetes.io/role/elb"     = "1"
   }
 }
@@ -65,7 +65,7 @@ resource "aws_subnet" "private-1" {
     # This Internal ELB will allow EKS Cluster to deploy private load balancer in the ablove subnet.
     # If we don't define this EKS will not able to create the Load Balancers.
     "kubernetes.io/role/internal-elb" = "1"
-    "kubernetes.io/cluster/demo"      = "owned"
+    "kubernetes.io/cluster/eks"      = "shared"
   }
 }
 
@@ -77,6 +77,6 @@ resource "aws_subnet" "private-2" {
   tags = {
     "Name"                            = "private-2"
     "kubernetes.io/role/internal-elb" = "1"
-    "kubernetes.io/cluster/demo"      = "owned"
+    "kubernetes.io/cluster/eks"      = "shared "
   }
 }
