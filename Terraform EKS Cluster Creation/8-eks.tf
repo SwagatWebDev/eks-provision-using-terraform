@@ -34,10 +34,10 @@ resource "aws_iam_role_policy_attachment" "amazon_eks_cluster_policy" {
 # Step-3: EKS Cluster Creation
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_cluster
 
-resource "aws_eks_cluster" "eks" {
+resource "aws_eks_cluster" "eks-latest" {
 
   # Name of the cluster.
-  name     = "eks"
+  name     = "eks-latest"
 
   # we just need to attach the role which has policy associated.
   # The Amazon Resource Name(ARN) of the IAM role that provides permission for
