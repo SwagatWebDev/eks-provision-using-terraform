@@ -64,7 +64,7 @@ resource "aws_eks_node_group" "nodes-general" {
 
   # We need to define the subnets. Here we are going to use only Private subnets to deploy
   # our worker node. 
-  # Note: We only use Public subnet to deploy the load balancer
+  # Note: We only use Public subnet to deploy the load balancer.
   subnet_ids = [
     aws_subnet.private-1.id,
     aws_subnet.private-2.id
